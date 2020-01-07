@@ -133,8 +133,9 @@
                            </div>
                            <div class="desc">
                               <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
+                                 <% for(var i=0; i<users.length; i++) { %>
+                                    <p><%= users[i].first %></p>
+                                 <% } %>
                               </p>
                               <div class="d-flex justify-content-between">
                                  <div class="d-flex align-items-center">
@@ -556,11 +557,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       //    console.error("Error adding document: ", error);
       // });
 
-      db.collection("users").get().then((querySnapshot) => {
-         querySnapshot.forEach((doc) => {
-            console.log('data', doc.data());
-         });
-      });
+      // db.collection("users").get().then((querySnapshot) => {
+      //    querySnapshot.forEach((doc) => {
+      //       console.log('data', doc.data());
+      //    });
+      // });
 
    </script>
 
