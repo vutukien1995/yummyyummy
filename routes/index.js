@@ -38,17 +38,17 @@ router.get('/blog', function(req, res, next) {
 
 router.get('/room', async (req, res) => {
 
-  let users = [];
+  let messages = [];
 
-  await db.collection("users").get().then((querySnapshot) => {
+  await db.collection("room-message").orderBy("createdDate").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      users.push(doc.data());
+      messages.push(doc.data());
     });
   });
   
   res.render('room', { 
     title: title,
-    users: users
+    messages: messages
   });
 
   console.log('users: ', users);
