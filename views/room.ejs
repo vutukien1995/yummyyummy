@@ -182,7 +182,6 @@
             <div class="col-lg-4">
                <div class="blog_right_sidebar">
                   <aside class="single_sidebar_widget search_widget">
-                     <form action="#">
                         <div class="form-group">
                            <div class="input-group mb-3">
                               <input type="text" class="form-control" placeholder='Search Keyword'
@@ -192,9 +191,9 @@
                               </div>
                            </div>
                         </div>
-                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                           type="submit">Search</button>
-                     </form>
+                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit" id="search-btn">
+                           Search
+                        </button>
                   </aside>
                   <aside class="single_sidebar_widget post_category_widget">
                      <h4 class="widget_title">Category</h4>
@@ -572,6 +571,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
          });
       });
 
+      $('#search-btn').click(() => {
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+               alert(position.coords.latitude + ' - ' + position.coords.longitude);
+            });
+         } else { 
+            alert("Geolocation is not supported by this browser.");
+         }
+      });
    </script>
 
 </body>

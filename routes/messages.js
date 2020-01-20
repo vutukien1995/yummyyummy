@@ -23,9 +23,9 @@ router.get('/', async (req, res) => {
 /** POST message */
 router.post('/', async (req, res) => {
 
-  if (!req.body.name) return res.send("Missing name!");
-  if (!req.body.email) return res.send("Missing email!");
-  if (!req.body.content) return res.send("Missing content!");
+  if (!req.body.name) return res.status(400).send("Missing name!");
+  if (!req.body.email) return res.status(400).send("Missing email!");
+  if (!req.body.content) return res.status(400).send("Missing content!");
 
   db.collection("room-message").add({
       name : req.body.name,

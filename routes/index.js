@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+// Firebase config
 var firebase = require('firebase-admin');
 
 const serviceAccount = require('../common/yummyyummy-84ed5-firebase-adminsdk-ebdli-9f88e88bba.json');
@@ -9,33 +10,23 @@ firebase.initializeApp({
 });
 const db = firebase.firestore();
 
+// Constant
 const title = "Yummyyummy";
 
-/* GET home page. */
+
+/**
+ * Index page
+ */
 router.get('/', function(req, res, next) {
   res.render('index', { 
     title: 'Express' 
   });
 });
 
-router.get('/listings', function(req, res, next) {
-  res.render('listings', { 
-    title: 'Express' 
-  });
-});
 
-router.get('/elements', function(req, res, next) {
-  res.render('elements', { 
-    title: 'Express' 
-  });
-});
-
-router.get('/blog', function(req, res, next) {
-  res.render('blog', { 
-    title: 'Express' 
-  });
-});
-
+/**
+ * Room page
+ */
 router.get('/room', async (req, res) => {
 
   let messages = [];
@@ -54,10 +45,14 @@ router.get('/room', async (req, res) => {
   console.log('users: ', users);
 });
 
-router.get('/error', function(req, res, next) {
-  res.render('error', { 
-    title: title
-  });
-});
+
+// /**
+//  * Error page
+//  */
+// router.get('/error', function(req, res, next) {
+//   res.render('error', { 
+//     title: title
+//   });
+// });
 
 module.exports = router;
